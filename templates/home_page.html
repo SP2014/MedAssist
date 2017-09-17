@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MedAssist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <!--link rel="stylesheet" href="{{ url_for('static', filename='css/angular-material.min.css') }}"-->
+  <style type="text/css">
+    body[ng-cloak] {
+  display:none;
+}
+body {
+    background-color: #FEEBC8;
+}
+div[flex="30"] {
+  background-color: #DFDFDF;  
+}
+
+section[flex="40"] {
+  background-color: #D4E5FA;
+}
+section[flex="70"] {
+  background-color: #E8FCD6;
+}
+section[flex="20"] {
+ background-color: #FFD5E3;
+}
+section[flex=""] {
+ background-color: rgba(0, 128, 0, 0.35);
+}
+
+
+/* Important to set height for column layout */
+.boxWithHeight {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.a, section {
+  border: 5px solid rgba(85, 97, 85, 0.27);
+  margin: 5px;  
+}
+
+section {
+  background-color: #dedede;
+}
+
+  </style>  
+</head>
+
+<!--script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script-->
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl" layout="row" class="icondemoFontIconsWithLigatures" ng-cloak>
+
+<div flex="30" layout="column" class="boxWithHeight" layout-padding>
+    flex="30"
+    <section flex="40">flex="40"</section>
+    <section flex>flex</section>
+  </div>
+  <div flex layout="column" class="boxWithHeight" layout-padding>
+    flex
+    <section flex="70">flex="70"</section>
+    <section flex="20">flex="20"</section>
+    <section flex >flex </section>
+  </div>
+
+    <!--p ng-bind="firstname"></p-->
+
+    <!--md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    <div flex-xs flex-gt-xs="100" layout="column" layout-align="center center">
+
+      <p ng-bind="firstname"></p-->
+
+        <!--md-card class="card-40-center">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Sign Up</span>
+                </md-card-title-text>
+            </md-card-title>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="signup_form">
+            <div class="md-padding" layout-align="center">
+                <div layout="row">
+            <md-input-container flex="100">
+                <label>First name</label>
+                <input>
+            </md-input-container>
+                <md-input-container flex="100">
+                    <label>Last name</label>
+                    <input>
+                </md-input-container>
+                    </div>
+                <div layout="row">
+                <md-input-container flex="100">
+                    <label>Username</label>
+                    <input>
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Email</label>
+                    <input type="email">
+                </md-input-container>
+                    </div>
+                <div layout="row">
+                <md-input-container flex="100">
+                    <label>Password</label>
+                    <input type="password">
+                </md-input-container>
+                <md-input-container flex="100">
+                    <label>Repeat Password</label>
+                    <input type="password">
+                </md-input-container>
+                    </div>
+                
+
+            <md-card-actions layout="row" layout-align="center">
+                <br>
+                <center>
+                    <md-button class="md-primary md-raised signup_button" type="submit">Sign Up</md-button>
+
+                </center>
+                </form>
+            </md-card-actions>
+            <md-card-content>
+
+            </md-card-content>
+
+        </md-card-->
+    </div>
+</md-content>
+
+</div>
+
+
+
+<script src= "{{ url_for('static', filename='js/angular.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-animate.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-aria.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-messages.min.js') }}"></script>
+
+  
+<script src="{{ url_for('static', filename='js/angular-material.min.js') }}"></script>
+<script type="text/javascript">
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstname = "John";
+    $scope.lastname = "Doe";    
+});
+</script>
+</body>
+</html>

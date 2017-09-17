@@ -1,0 +1,23 @@
+acne
+allergy
+skin rash
+dermatitis
+mycosis
+psoriasis
+hives
+blister
+skin cancer
+ringworm
+skin ulcer
+pustule
+impetigo
+shingles
+burn
+dandruff
+wound
+rosacea
+candidiasis
+xeroderma
+sunburn
+chickenpox
+scabies

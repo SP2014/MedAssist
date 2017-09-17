@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>MedAssist</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/angular-material.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body layout="row" ng-app="myApp" ng-controller="myCtrl" class="icondemoFontIconsWithLigatures" ng-cloak style="padding-bottom:0;margin-bottom:0;">
+
+  <!-- Left Space -->
+  <div flex="20" layout="column" class="boxWithHeight" layout-padding>
+  </div>
+  
+  <!-- Bottom Content -->
+  <div flex="60" layout="column" class="boxWithHeight">
+    <md-card style="height: 100%; margin-top: 0px; margin-bottom: 0px; border-radius: 0px;">
+       
+        <div flex layout="column" class="boxWithHeight">  
+          <!-- Top Bar -->
+          <div>
+            <md-toolbar class="md-hue-2 md-whiteframe-2dp">
+              <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+                  <md-icon md-svg-icon="{{ url_for('static', filename='img/hos.svg') }}"></md-icon>
+                </md-button>
+
+                <h2 flex md-truncate ng-bind="title"></h2>
+
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+                </md-button>
+
+                <md-button class="md-icon-button" aria-label="More">
+                  <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+                </md-button>
+              </div>
+            </md-toolbar>
+          </div>
+          <!-- End of Top Bar -->
+
+
+          <div flex layout="row" class="boxWithHeight" layout-padding>
+              
+              <!-- Left Column -->
+              <div flex="40" layout="column" class="boxWithHeight" layout-padding>
+                  <section flex="30"></section>
+                  <section flex>
+                    <!-- Doctor image goes here -->
+                    <img src="{{ url_for('static', filename='img/doc2.png') }}" style="height:400px;">
+                  </section>
+              </div>
+
+              <!-- Center Column -->
+              <div flex layout="column" class="boxWithHeight" layout-padding>
+                  
+                  <!-- Message Block goes here -->
+                  <section flex="30">
+				  <div class="module top">
+					<p ng-bind="msg"></p>
+				  </div>
+                  </section>
+				  
+
+                  <!-- List view goes here -->
+                  <section flex="70" style="padding: 0px;">
+				      <div layout="column" layout-sm="column" layout-align="center center" ng-show="showProgress" style="margin-top:25%;">
+						<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+						<p>Please wait......</p>
+					  </div>
+					  
+					  <!-- Image Content -->
+					  <div layout="column" class="imageBlock md-whiteframe-1dp" ng-cloak style="height: 90%; padding-bottom: 0px; margin-bottom:100px;" ng-show="showPicture">
+					    <div class="smallHeader">
+						     <h2 ng-bind="diseaseName"></h2>
+                        </div>
+						
+						<md-content flex layout-padding>
+						   <!-- Description -->
+						   <p ng-bind="resultData.desc"></p>
+						   <h4 style="margin-top:-10px;">Symptopms</h4>
+						   <p style="margin-top:-20px;" ng-repeat="name in resultData.symptoms" ng-bind="name">&#8226; </p>
+						   <h4 style="margin-top:-10px;">Causes</h4>
+						   <p style="margin-top:-20px;" ng-bind="resultData.causes"></p>
+						   <h4 style="margin-top:-10px;">Treatment</h4>
+						   <p style="margin-top:-20px;" ng-bind="resultData.treatment"></p>
+						</md-content>
+
+						
+					  </div>
+					  
+                      <div layout="column" ng-cloak style="height: 100%; padding-bottom: 0px;" class="md-whiteframe-2dp ng-hide" >
+                         <md-toolbar class="md-warn" style="height: 30px">
+                            <div class="md-toolbar-tools">
+                              <h3 class="md-flex">Symptoms</h3>
+                            </div>
+                         </md-toolbar>
+
+                         <md-content flex>
+                            <md-list flex>
+                                <!--md-subheader class="md-no-sticky">Symptoms</md-subheader-->
+                                <md-list-item class="md-2-line" ng-repeat="item in todos" ng-click="null">
+                                    <md-checkbox ng-model="item.selected"></md-checkbox>
+                                    <p ng-bind="item.content"></p> 
+                              </md-list-item>
+                              <md-list-item>
+                                <md-button class="md-raised md-primary" layout-align="end">Primary</md-button>
+                              </md-list-item>
+                            </md-list>
+                         </md-content>
+                      </div>
+
+                    
+                  </section>
+                  <!-- List view ends here -->
+                  
+              </div>
+              
+          </div>
+
+
+          <!-- Bottom Content -->
+          <md-whiteframe class="md-whiteframe-3dp" flex="15" style="background-color: #303F9F;padding-bottom: 5px;" layout-padding layout-wrap>
+            <form name="userForm" enctype="multipart/form-data"> 
+              <div layout-gt-sm="row">
+                  <div flex="85" class="textContainer">
+                      <md-input-container class="md-block" style="border-color: white;" md-no-float>
+                         <!--label>Biography</label-->
+                         <textarea ng-model="description"  placeholder="Describe your problem here" rows="2" md-select-on-focus max-rows="2" style="margin-top: -20px;"></textarea>
+                      </md-input-container>
+                  </div>
+
+                  <div flex style="padding: 0;margin: 0;">
+                    <aps-upload-file></aps-upload-file>
+                  </div>
+              </div>
+            </form>    
+          </md-whiteframe>
+          <!-- End of Bottom Content -->
+        </div>
+       
+    </md-card>
+  </div>
+
+  <!-- Right Space -->
+  <div flex="20" layout="column" class="boxWithHeight" layout-padding>
+  </div>
+  <!-- End of Right Space -->
+
+<script src= "{{ url_for('static', filename='js/angular.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-animate.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-aria.min.js') }}"></script>
+<script src= "{{ url_for('static', filename='js/angular-messages.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/angular-material.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<script src="{{ url_for('static', filename='js/test.js') }}"></script>
+
+
+</body>
+</html>

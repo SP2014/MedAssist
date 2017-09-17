@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+   <head>
+      <meta charset="UTF-8">
+      <title>MedAssist</title>
+      <!--script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script-->
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/angular-material.min.css') }}">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   </head>
+   
+   
+   <body layout="row" ng-app="myApp" ng-controller="myCtrl" class="icondemoFontIconsWithLigatures" ng-cloak>
+    <!--div >
+    <input type="file" file-model="myFile"/>
+    <button ng-click="uploadFile()">upload me</button>
+    </div-->
+	<div flex="20" layout="column" class="boxWithHeight" layout-padding>
+  </div>
+  
+  <div flex layout="column" class="boxWithHeight">
+    <md-card style="height: 100%; margin-top: 0px; margin-bottom: 0px; border-radius: 0px;">
+       
+        <div flex layout="column" class="boxWithHeight">  
+          <!-- Top Bar -->
+          <div>
+            <md-toolbar class="md-hue-2 md-whiteframe-2dp">
+              <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
+                  <md-icon md-svg-icon="{{ url_for('static', filename='images/hos.svg') }}"></md-icon>
+                </md-button>
+
+                <h2 flex md-truncate ng-bind="title"></h2>
+
+                <md-button class="md-icon-button" aria-label="Favorite">
+                  <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
+                </md-button>
+
+                <md-button class="md-icon-button" aria-label="More">
+                  <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+                </md-button>
+              </div>
+            </md-toolbar>
+          </div>
+          <!-- End of Top Bar -->
+
+
+          <div flex layout="row" class="boxWithHeight" layout-padding>
+              
+              <!-- Left Column -->
+              <div flex="35" layout="column" class="boxWithHeight" layout-padding>
+                  <section flex="40"></section>
+                  <section flex>
+                    <!-- Doctor image goes here -->
+                    <img src="{{ url_for('static', filename='images/doc2.png') }}">
+                  </section>
+              </div>
+
+              <!-- Center Column -->
+              <div flex layout="column" class="boxWithHeight" layout-padding>
+                  
+                  <!-- Message Block goes here -->
+                  <section flex="30" style="padding: 0px;">
+                      <md-card md-colors="::{backgroundColor: 'blue-grey-700'}">
+                          <md-card-title>
+                            <md-card-title-text>
+                              <span class="md-headline">Card with image</span>
+                              <span class="md-subhead">Small</span>
+                            </md-card-title-text>
+                            <md-card-title-media>
+                              <div class="md-media-sm card-media"></div>
+                            </md-card-title-media>
+                          </md-card-title>
+                      </md-card>  
+                  </section>
+
+                  <!-- List view goes here -->
+                  <section flex="70" class="md-whiteframe-2dp" style="padding: 0px;">
+                      <div layout="column" ng-cloak style="height: 100%; padding-bottom: : 0px;">
+                         <md-toolbar class="md-warn" style="height: 30px">
+                            <div class="md-toolbar-tools">
+                              <h3 class="md-flex">Symptoms</h3>
+                            </div>
+                         </md-toolbar>
+
+                         <md-content flex>
+                            <md-list flex>
+                                <!--md-subheader class="md-no-sticky">Symptoms</md-subheader-->
+                                <md-list-item class="md-2-line" ng-repeat="item in todos" ng-click="null">
+                                    <md-checkbox ng-model="item.selected"></md-checkbox>
+                                    <p ng-bind="item.content"></p> 
+                              </md-list-item>
+                              <md-list-item>
+                                <md-button class="md-raised md-primary" layout-align="end">Primary</md-button>
+                              </md-list-item>
+                            </md-list>
+                         </md-content>
+                      </div>
+
+                    
+                  </section>
+                  <!-- List view ends here -->
+                  
+              </div>
+              
+          </div>
+
+
+          <!-- Bottom Content -->
+          <md-whiteframe class="md-whiteframe-3dp" flex="15" style="background-color: #FF5722;padding-bottom: 15px;" layout-padding layout-wrap>
+            <form name="userForm" enctype="multipart/form-data"> 
+              <div layout-gt-sm="row">
+                  <div flex="85" class="textContainer">
+                      <md-input-container class="md-block" style="border-color: white;" md-no-float>
+                         <!--label>Biography</label-->
+                         <textarea ng-model="user.biography"  placeholder="Describe your problem here" rows="2" md-select-on-focus max-rows="2" style="margin-top: -20px;"></textarea>
+                      </md-input-container>
+                  </div>
+
+                  <div flex>
+                    <aps-upload-file></aps-upload-file>
+                  </div>
+              </div>
+            </form>    
+          </md-whiteframe>
+          <!-- End of Bottom Content -->
+        </div>
+       
+    </md-card>
+  </div>
+
+  <div flex="20" layout="column" class="boxWithHeight" layout-padding>
+  </div>
+	
+	<script src= "{{ url_for('static', filename='js/angular.min.js') }}"></script>
+	<script src= "{{ url_for('static', filename='js/angular-animate.min.js') }}"></script>
+    <script src= "{{ url_for('static', filename='js/angular-aria.min.js') }}"></script>
+    <script src= "{{ url_for('static', filename='js/angular-messages.min.js') }}"></script>
+	
+    <script src="{{ url_for('static', filename='js/angular-material.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+	
+	<script src="{{ url_for('static', filename='js/test.js') }}"></script>
+	
+   </body>
+</html>   
